@@ -31,17 +31,29 @@ def main():
     for p in [player1, player2, player3, player4]:
         print(f"Player {p.name}: {p.ach_set}")
 
+    p1, p2, p3, p4 = player1, player2, player3, player4
+
     print()
-    print(f"All distinct achievements: {player1.ach_set.union(player2.ach_set, player3.ach_set, player4.ach_set)}")
-    print(f"\nCommon achievements: {player1.ach_set.intersection(player2.ach_set, player3.ach_set, player4.ach_set)}")
-    print(f"\nOnly {player1.name} has: {player1.ach_set.difference(player2.ach_set, player3.ach_set, player4.ach_set)}")
-    print(f"Only {player2.name} has: {player2.ach_set.difference(player1.ach_set, player3.ach_set, player4.ach_set)}")
-    print(f"Only {player3.name} has: {player3.ach_set.difference(player1.ach_set, player2.ach_set, player4.ach_set)}")
-    print(f"Only {player4.name} has: {player4.ach_set.difference(player1.ach_set, player2.ach_set, player3.ach_set)}")
-    print(f"\n{player1.name} is missing: {all_achievements.difference(player1.ach_set)}")
-    print(f"{player2.name} is missing: {all_achievements.difference(player2.ach_set)}")
-    print(f"{player3.name} is missing: {all_achievements.difference(player3.ach_set)}")
-    print(f"{player4.name} is missing: {all_achievements.difference(player4.ach_set)}")
+    all_distinct = p1.ach_set.union(p2.ach_set, p3.ach_set, p4.ach_set)
+    print(f"All distinct achievements: {all_distinct}")
+
+    common = p1.ach_set.intersection(p2.ach_set, p3.ach_set, p4.ach_set)
+    print(f"\nCommon achievements: {common}")
+
+    only1 = p1.ach_set.difference(p2.ach_set, p3.ach_set, p4.ach_set)
+    only2 = p2.ach_set.difference(p1.ach_set, p3.ach_set, p4.ach_set)
+    only3 = p3.ach_set.difference(p1.ach_set, p2.ach_set, p4.ach_set)
+    only4 = p4.ach_set.difference(p1.ach_set, p2.ach_set, p3.ach_set)
+
+    print(f"\nOnly {p1.name} has: {only1}")
+    print(f"Only {p2.name} has: {only2}")
+    print(f"Only {p3.name} has: {only3}")
+    print(f"Only {p4.name} has: {only4}")
+
+    print(f"\n{p1.name} is missing: {all_achievements.difference(p1.ach_set)}")
+    print(f"{p2.name} is missing: {all_achievements.difference(p2.ach_set)}")
+    print(f"{p3.name} is missing: {all_achievements.difference(p3.ach_set)}")
+    print(f"{p4.name} is missing: {all_achievements.difference(p4.ach_set)}")
 
 
 if __name__ == "__main__":
